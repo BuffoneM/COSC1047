@@ -13,6 +13,8 @@ public class PartA1 {
 	
 	public static void main(String[] args) {
 		
+		int randomQuantity = (int)(200 + (int)(Math.random() * (300 - 200 + 1)));
+		
 	}
 
 }
