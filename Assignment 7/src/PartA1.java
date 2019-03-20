@@ -28,7 +28,8 @@ public class PartA1 {
 	}
 	
 	public static void populateFile(File file) {
-		int randomQuantity = (int)(200 + (int)(Math.random() * (300 - 200 + 1)));
+		//int randomQuantity = (int)(200 + (int)(Math.random() * (300 - 200 + 1)));
+		int randomQuantity = 1;
 
 		try(DataOutputStream dos = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(file)))) {
 			for(int i = 0; i < randomQuantity; i++) {
@@ -54,7 +55,7 @@ public class PartA1 {
 			
 			int count = 0;
 			while(dos.available() > 0) {
-				System.out.printf("%1d ", dos.read());
+				System.out.printf("%1d ", dos.readInt());
 				if(++count == 15) {
 					count = 0;
 					System.out.println();
