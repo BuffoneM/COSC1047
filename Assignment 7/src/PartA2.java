@@ -27,9 +27,11 @@ public class PartA2 {
 		java.util.Date date = new java.util.Date();
 		double decimalNum = 5.5;
 		
-		try(DataOutputStream dos = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(file)))) {
+		try(ObjectOutputStream oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(file)))) {
 			
-			
+			oos.writeObject(array);
+			oos.writeObject(date);
+			oos.writeObject(decimalNum);
 			
 			
 		}
