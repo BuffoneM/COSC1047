@@ -9,6 +9,7 @@
  */
 
 import java.io.*;
+import java.util.Arrays;
 
 public class PartA2 {
 
@@ -16,7 +17,10 @@ public class PartA2 {
 		
 		File file = new File("Exercise17_05.dat");
 		
-		populateFile(file);
+		if(!file.exists()) {
+			populateFile(file);
+		}
+		readFile(file);
 		
 
 	}
@@ -33,7 +37,6 @@ public class PartA2 {
 			oos.writeObject(date);
 			oos.writeObject(decimalNum);
 			
-			
 		}
 		catch(FileNotFoundException fnfe) {
 			fnfe.printStackTrace();
@@ -42,6 +45,29 @@ public class PartA2 {
 			ioe.printStackTrace();
 		}
 		
+	}
+	
+	public static void readFile(File file) {
+		try(ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(file)))) {
+			
+			int[] fileArray = (int[])ois.readObject();
+			java.util.Date fileDate = (java.util.Date)ois.readObject();
+			double fileDouble = (double)ois.readObject();
+			
+			System.out.println(Arrays.toString(fileArray));
+			System.out.println(fileDate);
+			System.out.println(fileDouble);
+
+		}
+		catch(FileNotFoundException fnfe) {
+			fnfe.printStackTrace();
+		}
+		catch(IOException ioe) {
+			ioe.printStackTrace();
+		} 
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
