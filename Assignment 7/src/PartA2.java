@@ -65,7 +65,7 @@ public class PartA2 {
 		catch(IOException ioe) {
 			ioe.printStackTrace();
 		} 
-		catch (ClassNotFoundException e) {
+		catch(ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 	}
