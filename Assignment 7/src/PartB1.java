@@ -26,8 +26,9 @@ import java.io.*;
 
 public class PartB1 extends Application{
 	
-	private TextField userInput;
-	private TextArea textDisplay;
+	private TextField tfUserInput;
+	private TextArea taTextDisplay;
+	private File file;
 	
 	@Override
 	public void start(Stage primaryStage) {
@@ -40,25 +41,27 @@ public class PartB1 extends Application{
 		topPane.setPadding(new Insets(5,5,5,5));
 		
 		Label text = new Label("Enter a file:");
-		userInput = new TextField();
-		userInput.setPrefWidth(400);
+		tfUserInput = new TextField();
+		tfUserInput.setPrefWidth(400);
+				
 		topPane.add(text, 0, 0);
-		topPane.add(userInput, 1, 0);
+		topPane.add(tfUserInput, 1, 0);
 		mainPane.setTop(topPane);
 		
 		// Center of main pane
-		textDisplay = new TextArea();
-		textDisplay.setWrapText(true);
-		mainPane.setCenter(textDisplay);
+		taTextDisplay = new TextArea();
+		taTextDisplay.setWrapText(true);
+		mainPane.setCenter(taTextDisplay);
 		
 		// Bottom of main pane
-		Button saveChange = new Button("Save the change");
-		mainPane.setBottom(saveChange);
-		BorderPane.setMargin(saveChange, new Insets(5,5,5,5));
-		BorderPane.setAlignment(saveChange, Pos.BOTTOM_CENTER);
+		Button btSaveChange = new Button("Save the change");
+		mainPane.setBottom(btSaveChange);
+		BorderPane.setMargin(btSaveChange, new Insets(5,5,5,5));
+		BorderPane.setAlignment(btSaveChange, Pos.BOTTOM_CENTER);
 		
 		// Actions in the main pane
-		userInput.setOnAction(e -> readFile());
+		tfUserInput.setOnAction(e -> readFile());
+		btSaveChange.setOnAction(e -> writeFile());
 		
 		Scene scene = new Scene(mainPane, 500, 250);
 		primaryStage.setScene(scene);
@@ -68,15 +71,39 @@ public class PartB1 extends Application{
 	}
 	
 	private void readFile() {
-		File file = new File(userInput.getText());
+		file = new File(tfUserInput.getText());
 		
 		try(DataInputStream dos = new DataInputStream(new BufferedInputStream(new FileInputStream(file)))) {
-			
+			taTextDisplay.setText("");
 			while(dos.available() > 0) {
-				//int currentNum = dos.readInt();
-				//textDisplay.appendText(" " + currentNum);
+				int currentNum = dos.read();
+				taTextDisplay.appendText(Integer.toHexString(currentNum) + " ");
+			}
+			
+		}
+		catch(FileNotFoundException fnfe) {
+			fnfe.printStackTrace();
+		}
+		catch(IOException ioe) {
+			ioe.printStackTrace();
+		}
+	}
+	
+	private void writeFile() {
+		
+		try(DataOutputStream dos = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(file)))) {
+			
+			/*
+			 * 1. Take the textDisplay of hex values and take the space out from each value
+			 * 2. Parse each hex value into an integer, and write it to the file in base 16
+			 */
+			String[] parts = taTextDisplay.getText().split(" ");
+			int[] hexParts = new int[parts.length];
+			for(int i = 0; i < parts.length; i++) {
 				
-				textDisplay.appendText();
+				hexParts[i] = Integer.parseInt(parts[i], 16);
+				dos.write(hexParts[i]);
+				
 			}
 			
 		}

@@ -21,7 +21,6 @@ public class PartA2 {
 			populateFile(file);
 		}
 		readFile(file);
-		
 
 	}
 	

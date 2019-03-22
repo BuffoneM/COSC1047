@@ -55,7 +55,8 @@ public class PartA1 {
 			
 			while(dos.available() > 0) {
 				int currentNum = dos.readInt();
-				
+				System.out.println(currentNum);
+
 				// Calculations
 				count++;
 				sum += currentNum;
