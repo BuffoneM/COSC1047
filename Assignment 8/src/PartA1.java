@@ -18,8 +18,8 @@ public class PartA1 {
 		System.out.print("Enter a number: ");
 		int userNum = in.nextInt();
 		
-		System.out.println("Using recursion: " + recursiveSeries(userNum));
-		System.out.println("Using a for loop: " + loopSeries(userNum));
+		System.out.println("Series calculation using recursion: " + recursiveSeries(userNum));
+		System.out.println("Series calculation using a for loop: " + loopSeries(userNum));
 		
 	}
 	
@@ -40,5 +40,4 @@ public class PartA1 {
 		return answer;
 	}
 	
-
 }
