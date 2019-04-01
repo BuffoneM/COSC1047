@@ -77,7 +77,8 @@ public class PartB1 extends Application{
 			taTextDisplay.setText("");
 			while(dos.available() > 0) {
 				int currentNum = dos.read();
-				taTextDisplay.appendText(Integer.toHexString(currentNum) + " ");
+				taTextDisplay.appendText(Integer.toString(currentNum) + " ");
+				//taTextDisplay.appendText(Integer.toHexString(currentNum) + " ");
 			}
 			
 		}
