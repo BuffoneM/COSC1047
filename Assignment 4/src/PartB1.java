@@ -28,12 +28,12 @@ public class PartB1 extends Application{
 		pieArray[1] = 10.0;
 		pieArray[2] = 10.0;
 		pieArray[3] = 10.0;
-		/*pieArray[4] = 50.0;
+		pieArray[4] = 50.0;
 		pieArray[5] = 60.0;
 		pieArray[6] = 70.0;
 		pieArray[7] = 80.0;
 		pieArray[8] = 90.0;
-		pieArray[9] = 100.0;*/
+		pieArray[9] = 100.0;
 
 		
 		double sum = 0;

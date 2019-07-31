@@ -23,7 +23,7 @@ public class PartA2 extends Application {
 		/* ---------------------ANIMATE THE TEXT--------------------- */
 		Pane pane = new Pane();
 		
-		Text movingText = new Text(-500, 110, "Michael Buffone");
+		Text movingText = new Text(-500, 110, "mayssa is bae");
 		movingText.setFont(Font.font("Comic Sans MS", 50));
 		pane.getChildren().add(movingText);		
 		
