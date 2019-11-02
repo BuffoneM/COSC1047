@@ -73,7 +73,7 @@ public class PartA2 extends Application {
 		
 		Polygon standSide1 = new Polygon();
 		standSide1.getPoints().addAll(new Double[] {
-								100.0, 395.0,
+								100.0, 595.0,
 								110.0, 390.0,
 								110.0, 65.0,
 								100.0, 70.0
